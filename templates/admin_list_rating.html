@@ -1,0 +1,36 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+        <table border="2px">
+            <thead>
+                <td><strong>rating_id</strong></td>
+                <td>user_Id</td>
+                <td>food_Id</td>
+                <td>score</td>
+                <td>date</td>
+                <td>comment</td>
+                <td>pic</td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td><img src="data:image/jpeg;base64,{{ row[6] }}" alt=""></td>
+
+                <td>
+                    <form action="{{url_for('delete_rating')}}" method="POST">
+                        <input type="hidden" name="id" value="{{ row[0] }}">
+
+                        <input type="submit" value="Delete">
+                    </form> 
+                </td>
+
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

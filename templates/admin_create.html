@@ -1,0 +1,27 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+<form action="{{ url_for('addrow') }}" method="POST" enctype="multipart/form-data">
+    <h3>Please Add the New comment</h3>
+    food_name<br>
+    <input type="text" name = "food_name" required/><br>
+    price<br>
+    <input type="integer" name = "price" required/><br>
+    score (1 ~ 5)<br>
+    <input type="real" name = "score" /><br>
+    comment<br>
+    <input type="text" name = "comment" /><br>
+    store_name<br>
+    <input type="text" name = "store_name" required/><br>
+    addr<br>
+    <input type="text" name = "addr" required/><br>
+    date (yyyy/mm/dd)<br>
+    <input type="text" name = "date" /><br>
+    pic<br>
+    <input type="file" name = "pic" accept="image/*" /><br>
+    <input type="hidden" name = "return_page" value="{{ return_page }}"/>
+    <br>
+    <input type="submit" value="Submit" /><br>
+</form>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>food rating</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('guest_home') }}" class="navbar-brand">guestHome</a>
+                        
+            <a href="{{ url_for('guest_search_food') }}" class="navbar-item">food comment</a>   
+
+            <a href="{{ url_for('guest_search_user') }}" class="navbar-item">user comment</a>    
+            
+            <a href="{{ url_for('guest_search_top_rated') }}" class="navbar-item">top rated food</a>
+
+            <a href="{{ url_for('guest_login') }}" class="navbar-item">login</a>     
+
+            <a href="{{ url_for('guest_signup') }}" class="navbar-item">signup</a>     
+        </div>
+
+        <div class="body-content">
+            {% block content %}
+            {% endblock %}
+            <footer>
+                your user_id : {{session.get('user_id')}}
+            </footer>
+        </div>
+
+    </body>
+</html>

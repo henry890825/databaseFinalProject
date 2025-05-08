@@ -1,0 +1,14 @@
+{% extends "guest_layout.html" %}
+
+{% block content %}
+<h1>login</h1>
+
+<form method="POST">
+    username<br>
+    <input type="text" name="name" required> <br>
+    password<br>
+    <input type="password" name="password" required><br>
+    <br>
+    <input type="submit" name="submit">
+</form>
+{% endblock %}

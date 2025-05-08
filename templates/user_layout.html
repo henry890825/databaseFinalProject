@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>food rating</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='site.css')}}" />
+    </head>
+
+    <body>
+        <div class="navbar">
+            <a href="{{ url_for('user_home') }}" class="navbar-brand">userHome</a>
+            
+            <a href="{{ url_for('user_create') }}" class="navbar-item">add comment</a>
+
+            <a href="{{ url_for('user_search_food') }}" class="navbar-item">food comment</a>   
+
+            <a href="{{ url_for('user_search_user') }}" class="navbar-item">user comment</a>  
+
+            <a href="{{ url_for('user_search_top_rated') }}" class="navbar-item">top rated food</a>
+            
+            <a href="{{ url_for('user_search_own_comment') }}" class="navbar-item">your comment</a> 
+                
+            <a href="{{ url_for('logout') }}" class="navbar-item">logout</a>     
+
+        </div>
+
+        <div class="body-content">
+
+            {% block content %}
+            {% endblock %}
+
+        <footer>
+            your user_id : {{session.get('user_id')}}
+        </footer>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,58 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+    <h1>search your comment</h1>
+    <form action="{{ url_for('admin_search_own_comment') }}" method="POST">
+        <input type="text" name="food_name" placeholder="food name">
+        <input type="submit" name="submit" value="search">
+    </form>
+    <br>
+    <table border="2px">
+        <thead>
+            <td>food_name</td>
+            <td>price</td>
+            <td>score</td>
+            <td>visited_date</td>
+            <td>comment</td>
+            <td>pic</td>
+        </thead>
+
+        {% for row in rows %}
+        <tr>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[8] }}</td>
+            <td><img src="data:image/jpeg;base64,{{ row[9] }}" alt=""></td>
+            <td>
+                <form action="{{url_for('admin_delete_own_comment')}}" method="POST">
+                    <input type="hidden" name="rId" value="{{ row[0] }}">
+
+                    <input type="submit" value="Delete">
+                </form> 
+            </td>
+            <td>
+                <form action="{{url_for('admin_edit_own_comment')}}" method="POST">
+                    <input type="hidden" name="rId" value="{{ row[0] }}">
+
+                    <input type="submit" value="Edit">
+                </form> 
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+<!-- row[0]:Rating_id -->
+<!-- row[]:store_id -->
+<!-- row[2]:food_name -->
+<!-- row[3]:price -->
+<!-- row[5]:user_id -->
+<!-- row[4]:food_id -->
+<!-- row[6]:score -->
+<!-- row[9]:pic -->
+<!-- row[7]:date -->
+<!-- row[8]:comment -->
+<!-- row[]:user_name -->
+<!-- row[10]:password -->

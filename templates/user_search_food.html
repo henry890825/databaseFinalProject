@@ -1,0 +1,50 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+    <h1>search name</h1>
+    <form action="{{ url_for('user_search_food') }}" method="POST">
+        <input type="text" name="food_name" placeholder="food name">
+        <input type="submit" name="submit" value="search">
+    </form>
+    <br>
+    <table border="2px">
+        <thead>
+            <td>food_id</td>
+            <td>food_name</td>
+            <td>price</td>
+            <td>score</td>
+            <td>comment</td>
+            <td>visited_date</td>
+            <!-- <td>user_id</td> -->
+            <td>pic</td>
+            <td>store_name</td>
+            <td>store_addr</td>
+        </thead>
+
+        {% for row in rows %}
+        <tr>
+            <td>{{ row[4] }}</td>   
+            <td>{{ row[1] }}</td>   
+            <td>{{ row[2] }}</td>
+            <td>{{ row[5] }}</td>
+            <td>{{ row[7] }}</td>
+            <td>{{ row[6] }}</td>
+            <td><img src="data:image/jpeg;base64,{{ row[8] }}" alt=""></td>
+            <td>{{ row[9] }}</td>
+            <td>{{ row[10] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+<!-- row[0]:store_id -->
+<!-- row[1]:food_name -->
+<!-- row[2]:price -->
+<!-- row[3]:user_id -->
+<!-- row[4]:food_id -->
+<!-- row[5]:score -->
+<!-- row[6]:date -->
+<!-- row[7]:comment -->
+<!-- row[8]:pic -->
+<!-- row[9]:store_name -->
+<!-- row[10]:addr -->

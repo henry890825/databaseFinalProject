@@ -1,0 +1,52 @@
+{% extends "user_layout.html" %}
+
+{% block content %}
+    <h1>top rated</h1>
+    <!-- <form action="{{ url_for('admin_search_top_rated') }}" method="POST">
+        <input type="text" name="food_name" placeholder="food name">
+        <input type="submit" name="submit" value="search">
+    </form> -->
+    <br>
+    <table border="2px">
+        <thead>
+            <td>averge score</td>
+            <td>food_name</td>
+            <td>price</td>
+            <td>store_name</td>
+            <td>store_addr</td>
+            <!-- <td>food_id</td>
+            <td>count(Rating.rowid)</td> -->
+        </thead>
+
+        {% for row in rows1 %}
+        <tr>
+            <td>{{ row[5] }}</td>   
+            <td>{{ row[1] }}</td>   
+            <td>{{ row[2] }}</td>
+            <td>{{ row[9] }}</td>
+            <td>{{ row[10] }}</td>
+            <!-- <td>{{ row[4] }}</td> -->
+            <!-- <td>{{ row[3] }}</td>
+            <td>{{ row[6] }}</td>
+            <td>{{ row[7] }}</td> -->
+            <!-- <td>{{ row[11] }}</td>
+            <td>{{ row[12] }}</td> -->
+            <!-- <td>{{ row[8] }}</td> -->
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+<!-- row[0]:store_id -->
+<!-- row[1]:food_name -->
+<!-- row[2]:price -->
+<!-- row[3]:user_id -->
+<!-- row[4]:food_id -->
+<!-- row[5]:averge score -->
+<!-- row[6]:date -->
+<!-- row[7]:comment -->
+<!-- row[8]:pic -->
+<!-- row[9]:store_name -->
+<!-- row[10]:addr -->
+<!-- row[11]:COUNT(Rating.rowid) -->
+<!-- row[12]:SUM(Rating.score) -->

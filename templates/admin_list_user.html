@@ -1,0 +1,28 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+        <table border="2px">
+            <thead>
+                <td><strong>user_id</strong></td>
+                <td>name</td>
+                <td>password</td>
+            </thead>
+
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+
+                <td>
+                    <form action="{{url_for('delete_user')}}" method="POST">
+                        <input type="hidden" name="id" value="{{ row[0] }}">
+
+                        <input type="submit" value="Delete">
+                    </form> 
+                </td>
+
+            </tr>
+            {% endfor %}
+        </table>
+{% endblock %}

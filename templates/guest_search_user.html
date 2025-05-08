@@ -1,0 +1,46 @@
+{% extends "guest_layout.html" %}
+
+{% block content %}
+    <h1>search user</h1>
+    <form action="{{ url_for('guest_search_user') }}" method="POST">
+        <input type="text" name="user_name" placeholder="user name">
+        <input type="submit" name="submit" value="search">
+    </form>
+    <br>
+    <table border="2px">
+        <thead>
+            <td>user_id</td>
+            <td>user_name</td>
+            <td>food_name</td>
+            <td>price</td>
+            <td>score</td>
+            <td>visited_date</td>
+            <td>comment</td>
+            <td>pic</td>
+        </thead>
+        {% for row in rows %}
+            <tr>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[9] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[7] }}</td>
+                <td><img src="data:image/jpeg;base64,{{ row[8] }}" alt=""></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+<!-- row[0]:store_id -->
+<!-- row[1]:food_name -->
+<!-- row[2]:price -->
+<!-- row[3]:pic -->
+<!-- row[4]:user_id -->
+<!-- row[5]:food_id -->
+<!-- row[6]:score -->
+<!-- row[7]:date -->
+<!-- row[8]:comment -->
+<!-- row[9]:user_name -->
+<!-- row[10]:addr -->
